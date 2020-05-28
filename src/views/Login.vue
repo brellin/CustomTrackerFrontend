@@ -29,7 +29,13 @@ export default {
   methods: {
     handleSubmit(e) {
       e.preventDefault();
-      console.log({ ...this.input });
+      this.axios
+        .post("https://localhost:5001/auth/login", this.input)
+        .then(res => {
+          console.log(res.data);
+          this.$store.dispatch("login", this.input);
+        })
+        .catch(({ response }) => console.log(response.data));
     },
     handleChange(e) {
       this.input = { ...this.input, [e.target.name]: e.target.value };

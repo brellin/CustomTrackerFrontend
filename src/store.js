@@ -5,12 +5,11 @@ Vue.use(VueX)
 
 export default new VueX.Store({
     state: {
-        loggedIn: false
+        user: null
     },
     actions: {
         login(store, user) {
-            if (user) store.state.loggedIn = true
-            else store.state.loggedIn = false
+            store.state.user = user ? user : null
         }
     },
     mutations: {
