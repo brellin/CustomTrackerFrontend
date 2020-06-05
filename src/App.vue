@@ -32,6 +32,11 @@ body {
     text-decoration: none;
     transition: 0.3s ease;
 
+    &:hover {
+      color: $active;
+      text-decoration: underline;
+    }
+
     &.router-link-exact-active {
       color: $active;
       text-decoration: underline;
