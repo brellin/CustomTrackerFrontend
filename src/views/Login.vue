@@ -1,6 +1,7 @@
 <template>
   <div class="login">
-    <h1>Log In</h1>
+    <h1 v-if="registered">Log In</h1>
+    <h1 v-else>Register</h1>
     <form v-on:submit="handleSubmit">
       <div>
         <label>Username</label>
@@ -12,6 +13,14 @@
       </div>
       <button>Submit</button>
     </form>
+    <p v-if="registered">
+      Don't have an account?
+      <button v-on:click="setRegistered()">Make One</button>
+    </p>
+    <p v-else>
+      Already have an account?
+      <button v-on:click="setRegistered()">Make One</button>
+    </p>
   </div>
 </template>
 
@@ -23,14 +32,20 @@ export default {
       input: {
         username: "",
         password: ""
-      }
+      },
+      registered: true
     };
   },
   methods: {
     handleSubmit(e) {
       e.preventDefault();
       this.axios
-        .post("https://localhost:5001/auth/login", this.input)
+        .post(
+          `https://localhost:5001/auth/${
+            this.registered ? "login" : "register"
+          }`,
+          this.input
+        )
         .then(res => {
           console.log(res.data);
           this.$store.dispatch("login", res.data);
@@ -39,6 +54,9 @@ export default {
     },
     handleChange(e) {
       this.input = { ...this.input, [e.target.name]: e.target.value };
+    },
+    setRegistered() {
+      this.registered = !this.registered;
     }
   }
 };
