@@ -2,7 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>
-      <router-link to="/login">{{$store.state.user ? 'Login': 'Log Out'}}</router-link>
+      <router-link to="/login" v-if="!$store.state.user">Login</router-link>
+      <button v-else>Log Out</button>
     </div>
     <router-view />
   </div>

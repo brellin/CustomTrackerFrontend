@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueX, { mapActions } from 'vuex';
+import VueX from 'vuex';
 
 Vue.use(VueX);
 
@@ -11,11 +11,16 @@ export default new VueX.Store({
     actions: {
         login(state, data) {
             const { token, user } = data;
-            state.token = token;
-            state.user = user;
+            this.commit('setUser', user);
+            this.commit('setToken', token);
         }
     },
     mutations: {
-        ...mapActions(['login'])
+        setUser(state, user) {
+            state.user = user;
+        },
+        setToken(state, token) {
+            state.token = token;
+        }
     }
 });
