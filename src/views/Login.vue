@@ -19,7 +19,7 @@
     </p>
     <p v-else>
       Already have an account?
-      <button v-on:click="setRegistered()">Make One</button>
+      <button v-on:click="setRegistered()">Log In</button>
     </p>
   </div>
 </template>
