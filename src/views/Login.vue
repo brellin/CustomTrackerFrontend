@@ -1,25 +1,22 @@
 <template>
   <div class="login">
-    <h1 v-if="registered">Log In</h1>
-    <h1 v-else>Register</h1>
-    <form v-on:submit="handleSubmit">
+    <h1>{{registered?'Log In':'Register'}}</h1>
+    <form @submit="handleSubmit">
       <div>
         <label>Username</label>
-        <input type="text" name="username" v-on:input="handleChange" />
+        <input type="text" name="username" @input="handleChange" />
       </div>
       <div>
         <label>Password</label>
-        <input type="password" name="password" v-on:input="handleChange" />
+        <input type="password" name="password" @input="handleChange" />
       </div>
       <button>Submit</button>
     </form>
-    <p v-if="registered">
-      Don't have an account?
-      <button v-on:click="setRegistered()">Make One</button>
-    </p>
-    <p v-else>
-      Already have an account?
-      <button v-on:click="setRegistered()">Log In</button>
+    <p>
+      {{ registered ? 'Don\'t have an account?': 'Already have an account?'}}
+      <button
+        @click="setRegistered()"
+      >{{registered?'Make One':'Log In'}}</button>
     </p>
   </div>
 </template>
@@ -85,22 +82,27 @@ form {
       }
     }
   }
-
   button {
-    background: $active;
-    border: 1px solid $inactive;
-    padding: 5px 15px;
-    border-radius: 2.5px;
-    cursor: pointer;
-    transition: 0.3s ease;
     font-size: 1.2rem;
-    margin: 5px 0;
+  }
+}
+button {
+  background: $active;
+  border: 1px solid $inactive;
+  padding: 5px 15px;
+  border-radius: 2.5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: 5px 0;
 
-    &:hover {
-      background: $inactive;
-      border: 1px solid $active;
-      color: $active;
-    }
+  &:hover {
+    background: $inactive;
+    border: 1px solid $active;
+    color: $active;
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 </style>
