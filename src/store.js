@@ -5,11 +5,14 @@ Vue.use(VueX)
 
 export default new VueX.Store({
     state: {
-        user: null
+        user: null,
+        token: null
     },
     actions: {
-        login(store, user) {
-            store.state.user = user ? user : null
+        login(state, data) {
+            const { token, user } = data
+            state.token = token
+            state.user = user
         }
     },
     mutations: {

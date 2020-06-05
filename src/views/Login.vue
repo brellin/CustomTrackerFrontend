@@ -33,9 +33,9 @@ export default {
         .post("https://localhost:5001/auth/login", this.input)
         .then(res => {
           console.log(res.data);
-          this.$store.dispatch("login", this.input);
+          this.$store.dispatch("login", res.data);
         })
-        .catch(({ response }) => console.log(response.data));
+        .catch(({ response }) => console.error(response.data));
     },
     handleChange(e) {
       this.input = { ...this.input, [e.target.name]: e.target.value };
