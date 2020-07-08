@@ -1,0 +1,22 @@
+@import '../variables';
+
+nav {
+  @include flex($justify: space-around);
+  padding: 10px;
+  background: linear-gradient($navbg, transparent);
+
+  a {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $inactive;
+    text-decoration: none;
+    transition: 0.3s ease;
+
+    &:hover, &.active {
+      color: $active;
+      text-decoration: underline;
+    }
+
+  }
+
+}
