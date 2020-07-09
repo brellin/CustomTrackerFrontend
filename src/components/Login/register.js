@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { logIn } from '../../actions';
-import './login.scss';
 
 export default props => {
 
@@ -13,8 +12,8 @@ export default props => {
         password: ''
     });
 
-    return <div className='login'>
-        <h1>Log In</h1>
+    return <div className="login">
+        <h1>Register</h1>
 
         <form onSubmit={ e => e.preventDefault() }>
             { Object.keys(fields).map(f => <div className="input" key={ f }>
@@ -25,13 +24,13 @@ export default props => {
                         ...fields,
                         [ f ]: e.target.value
                     }) }
-                    type={ f === 'password' ? f : "text" }
+                    type={ f === 'password' ? f : 'text' }
                 />
             </div>) }
 
             <button onClick={ e => {
                 e.preventDefault();
-                dispatch(logIn(fields, true));
+                dispatch(logIn(fields, false));
             } }>Submit</button>
         </form>
     </div>;

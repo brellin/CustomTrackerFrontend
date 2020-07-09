@@ -1,7 +1,8 @@
 import Header from './Header';
-import { Login } from './Login';
+import { Login, Register } from './Login';
 
 export {
     Header,
-    Login
+    Login,
+    Register
 };

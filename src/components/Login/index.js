@@ -1,5 +1,7 @@
 import Login from './Login';
+import Register from './register';
 
 export {
-    Login
+    Login,
+    Register
 };
