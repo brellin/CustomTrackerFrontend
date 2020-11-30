@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { logIn } from '../../actions';
 import './login.scss';
@@ -33,6 +34,8 @@ export default props => {
                 e.preventDefault();
                 dispatch(logIn(fields, true));
             } }>Submit</button>
+
+            <p>Don't have an account? <Link to='/register'>Make One</Link></p>
         </form>
     </div>;
 

@@ -1,13 +1,12 @@
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://custom-tracker.herokuapp.com/';
+import { axioken } from './assets/utils';
 
 const actionTypes = {
     LOGIN: 'LOGIN'
 };
 
 const logIn = (user, login) => dispatch => {
-    axios.post(`auth/${ login ? 'login' : 'register' }`, user)
+    axioken
+        .post(`auth/${ login ? 'login' : 'register' }`, user)
         .then(res => {
             console.log(res);
 

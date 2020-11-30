@@ -19,4 +19,41 @@ nav {
 
   }
 
+  div {
+
+    button {
+      color: $inactive;
+      font-size: 2rem;
+      font-weight: bold;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: .3s ease;
+      background: none;
+
+      &:hover {
+        color: $active;
+      }
+
+    }
+    
+    div.dropdown {
+      background: white;
+      @include flex(column, center, center);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: .3s ease;
+      border: 1px solid $inactive;
+      border-radius: 5px;
+      margin-top: 5px;
+      padding: 5px 15px;
+      
+      &.open {
+        transform: scaleY(1);
+      }
+      
+    }
+    
+  }
+
 }
